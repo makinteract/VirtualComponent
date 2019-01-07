@@ -1,0 +1,192 @@
+*************************************************************
+FileName = DynamicComplexModulo_v1i1.GBR
+AutoAperture = True
+*************************************************************
+Generating : Board Layout
+      File : DynamicComplexModulo_v1i1.GM3
+
+    Adding Layer      : Board Layout
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : DynamicComplexModulo_v1i1.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D10
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : DynamicComplexModulo_v1i1.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Solder Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D29
+    D30
+    D31
+    D32
+    D33
+*************************************************************
+
+*************************************************************
+Generating : Solder Side
+      File : DynamicComplexModulo_v1i1.GBL
+
+    Adding Layer      : Solder Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+*************************************************************
+
+*************************************************************
+Generating : Power Plane
+      File : DynamicComplexModulo_v1i1.GP2
+
+    Adding Layer      : Power Plane
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D33
+    D40
+    D41
+    D42
+*************************************************************
+
+*************************************************************
+Generating : Component Side
+      File : DynamicComplexModulo_v1i1.GTL
+
+    Adding Layer      : Component Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D13
+    D14
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+*************************************************************
+
+*************************************************************
+Generating : Ground Plane
+      File : DynamicComplexModulo_v1i1.GP1
+
+    Adding Layer      : Ground Plane
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D33
+    D40
+    D41
+    D42
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : DynamicComplexModulo_v1i1.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : DynamicComplexModulo_v1i1.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Component Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : DynamicComplexModulo_v1i1.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Component Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D13
+    D14
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+*************************************************************
+
+*************************************************************
+Generating : 3D
+      File : DynamicComplexModulo_v1i1.GM2
+
+    Adding Layer      : 3D
+
+
+Used DCodes :
+*************************************************************
+

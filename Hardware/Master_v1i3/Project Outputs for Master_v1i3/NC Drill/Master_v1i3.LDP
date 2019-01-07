@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\Andrea\GIT\VirtualComponent\Hardware\Master_v1i3\Master_v1i3.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=master_v1i3.txt|DrillLayers=gtl,gp1,g1,gbl
+LayersSetName=Top_Bot_Rect_Holes|DrillFile=master_v1i3-rectholes.txt|DrillLayers=gtl,gp1,g1,gbl

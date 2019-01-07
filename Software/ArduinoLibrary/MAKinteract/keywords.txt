@@ -1,0 +1,13 @@
+#######################################
+# Syntax Coloring Map For MD5
+#######################################
+
+SwitchMatrix	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+connect	KEYWORD2
+disconnect	KEYWORD2
+update	KEYWORD2

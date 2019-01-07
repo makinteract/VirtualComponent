@@ -1,0 +1,10 @@
+Output: Export STEP
+Type  : ExportSTEP
+From  : Variant [[No Variations]] of PCB Document [StaticModulo_v1i2.PcbDoc]
+   Generated File[StaticModulo_v1i2.step]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 11:28:19 PM On 1/7/2019

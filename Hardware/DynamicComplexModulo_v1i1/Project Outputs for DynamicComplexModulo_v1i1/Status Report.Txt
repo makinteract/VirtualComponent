@@ -1,0 +1,10 @@
+Output: Export STEP
+Type  : ExportSTEP
+From  : Variant [[No Variations]] of PCB Document [DynamicComplexModulo_v1i1.PcbDoc]
+   Generated File[DynamicComplexModulo_v1i1.step]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 10:30:33 AM On 6/15/2018

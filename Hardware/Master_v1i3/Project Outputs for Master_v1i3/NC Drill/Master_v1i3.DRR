@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Master_v1i3.PcbDoc   1/7/2019  10:44:23 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : L1 to L4
+ASCII RoundHoles File : Master_v1i3.TXT
+ASCII RectHoles File : Master_v1i3-RectHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      12mil (0.3mm)                                             Round             65        PTH        0.00inch (0.00mm)
+T2      35mil (0.9mm)                                             Round             88        PTH        0.00inch (0.00mm)
+T3      43mil (1.1mm)                                             Round             260       PTH        0.00inch (0.00mm)
+T4      43mil (1.1mm)                                             Rectangle         3         PTH        0.00inch (0.00mm)
+T5      71mil (1.8mm)                                             Round             5         PTH        0.00inch (0.00mm)
+T6      126mil (3.2mm)                                            Round             4         NPTH       0.00inch (0.00mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              425
+
+Total Processing Time (hh:mm:ss) : 00:00:01

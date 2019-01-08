@@ -1,0 +1,131 @@
+{
+  "boardName": "Variable Mix",
+  "boardID": "102",
+  "numberOfComponents": 7,
+  "ip": "192.168.4.1",
+  "port": 5204,
+
+  "components": [{
+      "id": 0,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "minResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "valueIndex": 127,
+      "connections": [{
+          "moduloPin": 0,
+          "boardPin": null
+        },
+        {
+          "moduloPin": 1,
+          "boardPin": null
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "minResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "valueIndex": 127,
+      "connections": [{
+          "moduloPin": 2,
+          "boardPin": null
+        },
+        {
+          "moduloPin": 3,
+          "boardPin": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "componentType": "capacitor",
+      "modeType": "variable",
+      "pins": 2,
+      "optionValues": [100, 200, 330, 470, 1000, 2200, 3300, 4700],
+      "value": 0,
+      "connections": [{
+          "moduloPin": 4,
+          "boardPin": null
+        },
+        {
+          "moduloPin": 5,
+          "boardPin": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "componentType": "capacitor",
+      "modeType": "variable",
+      "pins": 2,
+      "optionValues": [10000, 22000, 33000, 47000, 100000, 220000, 330000, 470000],
+      "value": 0,
+      "connections": [{
+          "moduloPin": 6,
+          "boardPin": null
+        },
+        {
+          "moduloPin": 7,
+          "boardPin": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "componentType": "inductor",
+      "modeType": "variable",
+      "pins": 2,
+      "optionValues": [1000, 1500, 2200, 2500, 3300, 4700, 6800, 10000],
+      "value": 0,
+      "connections": [{
+          "moduloPin": 10,
+          "boardPin": null
+        },
+        {
+          "moduloPin": 11,
+          "boardPin": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "componentType": "ADC",
+      "pins": 2,
+      "connections": [{
+          "moduloPin": 12,
+          "boardPin": null
+        },
+        {
+          "moduloPin": 13,
+          "boardPin": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "componentType": "AWG",
+      "ip": "http://192.168.4.3",
+      "pins": 2,
+      "frequency": 1,
+      "amplitude": 1,
+      "offset": 0,
+      "wave": ["sine", "square", "triangle", "dc", "sawtooth"],
+      "connections": [{
+          "moduloPin": 14,
+          "boardPin": null
+        },
+        {
+          "moduloPin": 15,
+          "boardPin": null
+        }
+      ]
+    }
+  ]
+}

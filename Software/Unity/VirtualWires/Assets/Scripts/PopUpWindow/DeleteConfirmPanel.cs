@@ -54,8 +54,9 @@ public class DeleteConfirmPanel : MonoBehaviour
     
     public void setTitle(string title)
     {
-        Text titleText = GameObject.Find("Title").GetComponent<Text>();
+        Text titleText = GameObject.Find("DeleteConfirmTitle").GetComponent<Text>();
         titleText.text = title;
+        //Debug.Log(titleText.text);
     }
 
     public void setPosition(Vector3 pos)
@@ -65,11 +66,5 @@ public class DeleteConfirmPanel : MonoBehaviour
 
     void ClosePanel () {
         modalPanelObject.SetActive (false);
-    }
-    private Vector3 GetCurrentMousePosition()
-    {
-        float distance = 1200;//GameObject.Find(comm.getSourcePin()).transform.position.z;
-        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-        return Camera.main.ScreenToWorldPoint(mousePosition);
     }
 }

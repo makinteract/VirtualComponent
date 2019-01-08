@@ -1,0 +1,134 @@
+{
+  "boardName": "Static Mix",
+  "boardID": "202",
+  "numberOfComponents": 8,
+  "ip": "192.168.4.1",
+  "port": 5204,
+
+  "components": [
+    {
+      "id": 0,
+      "componentType": "wire",
+      "modeType": "fix",
+      "pins": 2,
+      "connections": [{
+          "M": 0,
+          "B": null
+        },
+        {
+          "M": 1,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "componentType": "switch",
+      "modeType": "fix",
+      "pins": 2,
+      "connections": [{
+          "M": 2,
+          "B": null
+        },
+        {
+          "M": 3,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "componentType": "diode",
+      "modeType": "fix",
+      "pins": 2,
+      "value": 2,
+      "connections": [{
+          "M": 4,
+          "B": null
+        },
+        {
+          "M": 5,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "componentType": "zenerdiode",
+      "modeType": "fix",
+      "pins": 2,
+      "value": 2,
+      "connections": [{
+          "M": 6,
+          "B": null
+        },
+        {
+          "M": 7,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "componentType": "led",
+      "modeType": "fix",
+      "pins": 2,
+      "connections": [{
+          "M": 8,
+          "B": null
+        },
+        {
+          "M": 9,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "componentType": "inductor",
+      "modeType": "fix",
+      "pins": 2,
+      "value": 560,
+      "connections": [{
+          "M": 10,
+          "B": null
+        },
+        {
+          "M": 11,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "componentType": "inductor",
+      "modeType": "fix",
+      "pins": 2,
+      "value": "1000",
+      "connections": [{
+          "M": 12,
+          "B": null
+        },
+        {
+          "M": 13,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "componentType": "photoresistor",
+      "modeType": "fix",
+      "pins": 2,
+      "connections": [{
+          "M": 14,
+          "B": null
+        },
+        {
+          "M": 15,
+          "B": null
+        }
+      ]
+    }
+  ]
+}

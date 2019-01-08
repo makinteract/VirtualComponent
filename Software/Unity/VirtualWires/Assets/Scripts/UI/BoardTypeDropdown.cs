@@ -31,19 +31,19 @@ public class BoardTypeDropdown : MonoBehaviour {
 				}
 				case 1: {
 					ResetAllComponents();
-					string path = @"/storage/emulated/0/Android/data/com.kaist.virtualwires/files/Json/board01.json";
+					string path = @"/storage/emulated/0/Android/data/com.kaist.virtualcomponent/files/Json/board01.json";
 					boardUI.setupBoard(path);
 					break;
 				}
 				case 2: {
 					ResetAllComponents();
-					string path = @"/storage/emulated/0/Android/data/com.kaist.virtualwires/files/Json/board02.json";
+					string path = @"/storage/emulated/0/Android/data/com.kaist.virtualcomponent/files/Json/board02.json";
 					boardUI.setupBoard(path);
 					break;
 				}
 				case 3: {
 					ResetAllComponents();
-					string path = @"/storage/emulated/0/Android/data/com.kaist.virtualwires/files/Json/board03.json";
+					string path = @"/storage/emulated/0/Android/data/com.kaist.virtualcomponent/files/Json/board03.json";
 					boardUI.setupBoard(path);
 					break;
 				}

@@ -16,8 +16,7 @@ public class Communication : MonoBehaviour
     private string component;
 
     public Button pauseButton;
-
-    Dictionary<int, string> vwDB = new Dictionary<int, string>();
+    public Image freezeAll;
 
     void Start()
     {
@@ -25,7 +24,7 @@ public class Communication : MonoBehaviour
         dragState = false;
         popupState = false;
     }
-    
+
     public GameObject getPauseButton() {
         return pauseButton.gameObject;
     }
@@ -76,39 +75,39 @@ public class Communication : MonoBehaviour
         return time;
     }
 
-    public void setSourcePin(string pin)
+    public void setBoardPin(string pin)
     {
-        vw.source = pin;
+        vw.boardPin = pin;
     }
 
-    public void setTargetPin(string pin)
+    public void setComponentPin(string pin)
     {
-        vw.target = pin;
+        vw.componentPin = pin;
     }
 
-    public string getSourcePin()
+    public string getBoardPin()
     {
-        Debug.Log(vw.source);
-        return vw.source;
+        return vw.boardPin;
     }
 
-    public string getTargetPin()
+    public string getComponentPin()
     {
-        return vw.target;
+        return vw.componentPin;
     }
 
     public void resetData()
     {
-        vw.source = null;
-        vw.target = null;
+        vw.boardPin = null;
+        vw.componentPin = null;
     }
 
-    // string swapSourcetarget()
-    // {
-    //     string result = vw.source;
-    //     vw.source = vw.target;
-    //     vw.target = result;
-    //     result = vw.SaveToString();
-    //     return result;
-    // }
+    public void setAwgIP(string _awgIp)
+    {
+        vw.awgIp = _awgIp;
+    }
+
+    public string getAwgIP()
+    {
+        return vw.awgIp;
+    }
 }

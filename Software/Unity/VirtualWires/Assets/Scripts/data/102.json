@@ -1,0 +1,133 @@
+{
+  "boardName": "Variable Mix",
+  "boardID": "102",
+  "numberOfComponents": 7,
+  "ip": "192.168.4.1",
+  "port": 5204,
+
+  "components": [{
+      "id": 0,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 0,
+          "B": null
+        },
+        {
+          "M": 1,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 2,
+          "B": null
+        },
+        {
+          "M": 3,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "componentType": "capacitor",
+      "modeType": "variable",
+      "pins": 2,
+      "optionValues": [100, 200, 330, 470, 1000, 2200, 3300, 4700],
+      "value": 0,
+      "connections": [{
+          "M": 4,
+          "B": null
+        },
+        {
+          "M": 5,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "componentType": "capacitor",
+      "modeType": "variable",
+      "pins": 2,
+      "optionValues": [10000, 22000, 33000, 47000, 100000, 220000, 330000, 470000],
+      "value": 0,
+      "connections": [{
+          "M": 6,
+          "B": null
+        },
+        {
+          "M": 7,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "componentType": "inductor",
+      "modeType": "variable",
+      "pins": 2,
+      "optionValues": [1000, 1500, 2200, 2500, 3300, 4700, 6800, 10000],
+      "value": 0,
+      "connections": [{
+          "M": 10,
+          "B": null
+        },
+        {
+          "M": 11,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "componentType": "ADC",
+      "modeType": "fix",
+      "pins": 2,
+      "connections": [{
+          "M": 12,
+          "B": null
+        },
+        {
+          "M": 13,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "componentType": "AWG",
+      "ip": "http://192.168.4.3",
+      "modeType": "variable",
+      "pins": 2,
+      "frequency": 1,
+      "amplitude": 1,
+      "offset": 0,
+      "wave": ["sine", "square", "triangle", "dc", "sawtooth"],
+      "connections": [{
+          "M": 14,
+          "B": null
+        },
+        {
+          "M": 15,
+          "B": null
+        }
+      ]
+    }
+  ]
+}

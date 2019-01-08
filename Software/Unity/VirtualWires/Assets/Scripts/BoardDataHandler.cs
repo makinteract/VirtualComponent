@@ -47,4 +47,14 @@ public class BoardDataHandler : MonoBehaviour {
 	{
 		return board;
 	}
+
+	public string getBoardName() {
+		string name = (string)board.GetValue("boardName");
+		return name;
+	}
+
+	public string getBoardId() {
+		string id = (string)board.GetValue("boardID");
+		return id;
+	}
 }

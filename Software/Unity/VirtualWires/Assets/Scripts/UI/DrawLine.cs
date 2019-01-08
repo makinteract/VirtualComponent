@@ -9,15 +9,34 @@ public class DrawLine : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Material material;
     private LineRenderer lineRenderer;
     private Vector3 mousePosition;
+    private Vector3 wireStartPosition;
     private Vector3 wireEndPosition;
 
     Vector2 startPoint;
     Vector2 endPoint;
     bool drag;
 
+    public void Start()
+    {
+        setCommunicationObject();
+        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        //lineRenderer.SetWidth(4, 4);
+        lineRenderer.startWidth = 4;
+        lineRenderer.endWidth = 4;
+        lineRenderer.enabled = false;
+        lineRenderer.material = material;
+        //lineRenderer.SetVertexCount(0);
+        lineRenderer.positionCount = 0;
+    }
+
     public void setCommunicationObject(Communication obj)
     {
         comm = obj;
+    }
+
+    public void setCommunicationObject()
+    {
+		comm = GameObject.Find("Communication").GetComponent<Communication>();
     }
 
     void EnterPauseState()
@@ -35,7 +54,8 @@ public class DrawLine : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         // if(GameObject.Find(comm.getSourcePin())) {
         //     lineRenderer.SetPosition(0, GameObject.Find(name).transform.position);
         // } else {
-            lineRenderer.SetPosition(0, GetCurrentMousePosition());
+            wireStartPosition = GetCurrentMousePosition();
+            lineRenderer.SetPosition(0, wireStartPosition);
         // }
     }
 
@@ -47,6 +67,7 @@ public class DrawLine : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //lineRenderer.SetVertexCount(2);
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(1, wireEndPosition);
+        //lineRenderer.material.mainTextureScale = new Vector2(4, 4);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -58,40 +79,12 @@ public class DrawLine : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //VuforiaRenderer.Instance.Pause(false);
     }
 
-    public void Start()
-    {
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
-        //lineRenderer.SetWidth(4, 4);
-        lineRenderer.startWidth = 4;
-        lineRenderer.endWidth = 4;
-        lineRenderer.enabled = false;
-        lineRenderer.material = material;
-        //lineRenderer.SetVertexCount(0);
-        lineRenderer.positionCount = 0;
-    }
-
     private Vector3 GetCurrentMousePosition()
     {
-        float distance = 1500;//GameObject.Find(comm.getSourcePin()).transform.position.z;
+        //float distance = 1500;//GameObject.Find(comm.getSourcePin()).transform.position.z;
+        //float distance = Camera.main.nearClipPlane;
+        float distance = Camera.main.transform.position.y - transform.position.y;
         mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
         return Camera.main.ScreenToWorldPoint(mousePosition);
     }
-
-    /*
-    private Vector3 GetCurrentMousePosition()
-    {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        var plane = new Plane(Vector3.forward, Vector3.zero);
-
-
-        Vector3 result = new Vector3(0,0,0);
-
-        float rayDistance;
-        if (plane.Raycast(ray, out rayDistance))
-        {
-            result = ray.GetPoint(rayDistance);
-            Debug.Log("current mouse position = " + result.x + ", " + result.y + ", " + result.z);
-        }
-        return result;
-    }*/
 }

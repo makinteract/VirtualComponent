@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/virtualComponentsReset.unity
+- path: Assets/VirtualComponent2nd.unity
   isLoaded: 1
   isActive: 1

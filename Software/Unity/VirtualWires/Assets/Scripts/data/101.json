@@ -1,0 +1,162 @@
+{
+  "boardName": "Variable Resistors",
+  "boardID": "101",
+  "numberOfComponents": 8,
+  "ip": "192.168.4.1",
+  "port": 5204,
+
+  "components": [
+    {
+      "id": 0,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 0,
+          "B": null
+        },
+        {
+          "M": 1,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 2,
+          "B": null
+        },
+        {
+          "M": 3,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 4,
+          "B": null
+        },
+        {
+          "M": 5,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 6,
+          "B": null
+        },
+        {
+          "M": 7,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 8,
+          "B": null
+        },
+        {
+          "M": 9,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 10,
+          "B": null
+        },
+        {
+          "M": 11,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 12,
+          "B": null
+        },
+        {
+          "M": 13,
+          "B": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "componentType": "resistor",
+      "modeType": "variable",
+      "pins": 2,
+      "offsetResistance": 750,
+      "totSteps": 256,
+      "stepResistance": 390,
+      "value": 127,
+      "connections": [{
+          "M": 14,
+          "B": null
+        },
+        {
+          "M": 15,
+          "B": null
+        }
+      ]
+    }
+  ]
+}

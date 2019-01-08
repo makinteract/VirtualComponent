@@ -24,7 +24,7 @@ public class PauseButton : MonoBehaviour {
 
 	public void play() {
 		VuforiaRenderer.Instance.Pause(false);
-		Button temp = GetComponent<Button>();
+		//Button temp = GetComponent<Button>();
 		//temp.enabled = false;
 		//temp.image.CrossFadeAlpha(0,2,false);
 		gameObject.SetActive(false);

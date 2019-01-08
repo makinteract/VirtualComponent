@@ -51,20 +51,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AwgHandler.cs" />
      <Compile Include="Assets\Scripts\backup\ComponentButton.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\BoardDataHandler.cs" />
+     <Compile Include="Assets\Scripts\CapacitorConstraints.cs" />
      <Compile Include="Assets\Scripts\ComponentFactory.cs" />
+     <Compile Include="Assets\Scripts\ConstraintsHandler.cs" />
+     <Compile Include="Assets\Scripts\DataRecievedEvent.cs" />
+     <Compile Include="Assets\Scripts\HttpRequest.cs" />
      <Compile Include="Assets\Scripts\JsonHandler.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\BringToFront.cs" />
+     <Compile Include="Assets\Scripts\PopUpWindow\ConstraintsPanel.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\DeleteConfirmPanel.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\DisplayManager.cs" />
+     <Compile Include="Assets\Scripts\PopUpWindow\EditTogglePanel.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\ModalPanel.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\onDrag.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\PopUp.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\SelectSingleValuePanel.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\SelectValuePanel.cs" />
      <Compile Include="Assets\Scripts\PopUpWindow\SliderValuePanel.cs" />
+     <Compile Include="Assets\Scripts\PopUpWindow\VoltmeterPanel.cs" />
+     <Compile Include="Assets\Scripts\Query.cs" />
+     <Compile Include="Assets\Scripts\QueryResult.cs" />
+     <Compile Include="Assets\Scripts\ResistorConstraints.cs" />
+     <Compile Include="Assets\Scripts\SendAwgStartEvent.cs" />
      <Compile Include="Assets\Scripts\SendDataEvent.cs" />
      <Compile Include="Assets\Scripts\UI\BoardTypeDropdown.cs" />
      <Compile Include="Assets\Scripts\UI\BoardUI.cs" />
@@ -73,15 +85,21 @@
      <Compile Include="Assets\Scripts\UI\Component.cs" />
      <Compile Include="Assets\Scripts\UI\ComponentButton.cs" />
      <Compile Include="Assets\Scripts\UI\ComponentPins.cs" />
+     <Compile Include="Assets\Scripts\UI\CoverTouch.cs" />
      <Compile Include="Assets\Scripts\UI\DrawLine.cs" />
      <Compile Include="Assets\Scripts\UI\DrawVirtualWire.cs" />
-     <Compile Include="Assets\Scripts\UI\OnOffButton.cs" />
+     <Compile Include="Assets\Scripts\UI\MinusButton.cs" />
      <Compile Include="Assets\Scripts\UI\PauseButton.cs" />
      <Compile Include="Assets\Scripts\UI\Pin.cs" />
+     <Compile Include="Assets\Scripts\UI\PlusButton.cs" />
+     <Compile Include="Assets\Scripts\UI\RefreshButton.cs" />
+     <Compile Include="Assets\Scripts\UI\RotateButton.cs" />
+     <Compile Include="Assets\Scripts\UI\StatusButton.cs" />
      <Compile Include="Assets\Scripts\UI\ToggleCustom.cs" />
      <Compile Include="Assets\Scripts\UI\ToggleGroupCustom.cs" />
      <Compile Include="Assets\Scripts\UpdateDataEvent.cs" />
      <Compile Include="Assets\Scripts\UpdateJsonEvent.cs" />
+     <Compile Include="Assets\Scripts\Util.cs" />
      <Compile Include="Assets\Scripts\VWJson.cs" />
      <Compile Include="Assets\Scripts\WifiConnection.cs" />
      <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
@@ -90,8 +108,8 @@
      <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_ModelTarget.xml" />
      <None Include="Assets\Vuforia\Shaders\CameraDiffuse.shader" />
      <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
-     <None Include="Assets\Vuforia\Shaders\OutlineOpaque.shader" />
      <None Include="Assets\StreamingAssets\Vuforia\breadboard.xml" />
+     <None Include="Assets\Vuforia\Shaders\OutlineOpaque.shader" />
      <None Include="Assets\Vuforia\Shaders\Gradient.shader" />
      <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_Object_OT.xml" />
      <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
@@ -180,7 +198,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>D:/Works/Git/virtualWires/software/VirtualWire/Unity/VirtualWires/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+ <HintPath>D:/Works/Git/VirtualComponent/VirtualWires/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/Yoonji/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>

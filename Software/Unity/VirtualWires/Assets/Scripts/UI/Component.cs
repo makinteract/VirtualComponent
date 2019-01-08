@@ -37,11 +37,12 @@ public class Component : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         updateComponentDataAction = new UnityAction<ComponentBase>(updateComponentData);
         updateComponentDataEvent = new UpdateDataEvent();
         updateComponentDataEvent.AddListener(updateComponentDataAction);
-        if(data.type == "fixed") {
+        if(data.type == "fix") {
             fixedComponent = true;
         } else {
             fixedComponent = false;
         }
+        drag = true;
     }
 
     public void updateComponentData(ComponentBase _data)
@@ -74,13 +75,45 @@ public class Component : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void resetComponentData()
     {
         JObject initData = JObject.Parse(initDataJsonString);
-        data.value = (int)initData["value"];
-        data.connection[0]["boardPin"] = initData["connections"][0]["boardPin"];
-        data.connection[1]["boardPin"] = initData["connections"][1]["boardPin"];
 
-        Debug.Log("resetComponentData() value = " + data.value);
-        Debug.Log("resetComponentData() name = " + data.componentName);
-        Debug.Log(data.connection.ToString());
+        // JObject resetValueObject = new JObject();
+        // JObject disconnectLeftWireObject = new JObject();
+        // JObject disconnectRightWireObject = new JObject();
+
+        // string component = "";
+        
+        // need to send inital value
+        if(!fixedComponent)
+            data.value = (int)initData["value"];
+        
+        // if(name.Contains("resistor")) component = "R";
+        // else if (name.Contains("capacitor")) component = "C";
+        // else if (name.Contains("inductor")) component = "L";
+
+        // resetValueObject.Add("set", component);
+        // resetValueObject.Add("id", data.id);
+        // resetValueObject.Add("val", data.value);
+        // data.changed.Add("resetValue", resetValueObject);
+
+        // // disconnect left wire
+        // disconnectLeftWireObject.Add("set", "X");
+        // disconnectLeftWireObject.Add("on", 0);
+        // disconnectLeftWireObject.Add("M", data.connection[0]["M"]);
+        // disconnectLeftWireObject.Add("B", data.connection[0]["B"]);
+        // data.changed.Add("disconnectLeft", disconnectLeftWireObject);
+
+        // // need to disconnect right wire
+        // disconnectRightWireObject.Add("set", "X");
+        // disconnectRightWireObject.Add("on", 0);
+        // disconnectRightWireObject.Add("M", data.connection[1]["M"]);
+        // disconnectRightWireObject.Add("B", data.connection[1]["B"]);
+        // data.changed.Add("disconnectRight", disconnectRightWireObject);
+
+        // board information reset
+        data.connection[0]["B"] = initData["connections"][0]["B"];
+        data.connection[1]["B"] = initData["connections"][1]["B"];
+
+        //jsonHandler.updateJsonEvent.Invoke(data);
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
@@ -104,26 +137,38 @@ public class Component : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        drag = true;
-        transform.position = new Vector3(GetCurrentMousePosition().x, transform.position.y, GetCurrentMousePosition().z);
+        //drag = true;
+        if(drag) {
+            transform.position = new Vector3(GetCurrentMousePosition().x, transform.position.y, GetCurrentMousePosition().z);
 
-        GameObject[] temp = GameObject.FindGameObjectsWithTag("wire");
-        foreach(GameObject wireObj in temp)
-        {
-            if(wireObj.name.Contains(name))
+            GameObject[] temp = GameObject.FindGameObjectsWithTag("wire");
+            foreach(GameObject wireObj in temp)
             {
-                if(wireObj.name.Contains("Left")) {
-                    wireEndPosition = getTargetComponentPinPosition("LeftPin");
+                if(wireObj.name.Contains(name))
+                {
+                    if(wireObj.name.Contains("Left")) {
+                        wireEndPosition = getTargetComponentPinPosition("LeftPin");
+                        wireEndPosition.x += 10;
+                    }
+                    else if(wireObj.name.Contains("Right")) {
+                        wireEndPosition = getTargetComponentPinPosition("RightPin");
+                        wireEndPosition.x -= 10;
+                    }
+                    LineRenderer wireLineRender = wireObj.GetComponent<LineRenderer>();
+                    wireLineRender.SetPosition(1, wireEndPosition);
                 }
-                else if(wireObj.name.Contains("Right")) {
-                    wireEndPosition = getTargetComponentPinPosition("RightPin");
-                }
-                LineRenderer wireLineRender = wireObj.GetComponent<LineRenderer>();
-                wireLineRender.SetPosition(1, wireEndPosition);
             }
         }
     }
 	
+    public void setDragState(bool state) {
+        drag = state;
+    }
+
+    public bool getDragState() {
+        return drag;
+    }
+
     void EnterPauseState()
     {
         Communication comm = GameObject.Find("Communication").GetComponent<Communication>();
@@ -133,13 +178,16 @@ public class Component : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        drag = false;
+        //drag = false;
         //VuforiaRenderer.Instance.Pause(false);
     }
 
     private Vector3 GetCurrentMousePosition()
     {
-        float distance = 1100;
+        //float distance = 1100;
+        //float distance = Camera.main.nearClipPlane;
+        float distance = Camera.main.transform.position.y - transform.position.y;
+        
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
         return Camera.main.ScreenToWorldPoint(mousePosition);
     }

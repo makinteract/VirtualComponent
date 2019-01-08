@@ -10,13 +10,19 @@ using System.Collections.Generic;
 //  This script will be updated in Part 2 of this 2 part series.
 public class SelectValuePanel : MonoBehaviour
 {
+    public ConstraintsHandler constraintsHandle;
+    public Dropdown constraintsDropdown;
     public ToggleGroupCustom toggleGroup;
     public Button saveButton;
     //public Button noButton;
-    public Button cancelButton;
+    // public Button cancelButton;
+    public Button editButton;
+    // public Button constraintsSaveButton;
     public GameObject modalPanelObject;
+    private int dropdownSelectedValue;
     private int value;
-    private string unit;
+    private int indexSumValue;
+    private string component;
     private int[] optionValues;
 
     private static SelectValuePanel modalPanel;
@@ -35,6 +41,7 @@ public class SelectValuePanel : MonoBehaviour
 
     void Start() {
         value = 0;
+        dropdownSelectedValue = 0;
     }
 
     void Update() {
@@ -44,70 +51,148 @@ public class SelectValuePanel : MonoBehaviour
     public ToggleCustom currentSelection {
         get { return toggleGroup.ActiveToggles().FirstOrDefault(); }
     }
+
+    // public void ResetComponent(UnityAction resetAllEvent) {
+    //     resetButton.onClick.RemoveAllListeners();
+    //     resetButton.onClick.AddListener(resetAllEvent);
+    //     resetButton.gameObject.SetActive (true);
+    // }
+
     // Yes/No/Cancel: A string, a Yes event, a No event and Cancel event
-    public void Choice (UnityAction yesEvent, UnityAction cancelEvent, int _val) {
+    public void Choice (UnityAction yesEvent, UnityAction cancelEvent, UnityAction editConnectionEvent) {
         modalPanelObject.SetActive (true);
         
         saveButton.onClick.RemoveAllListeners();
         saveButton.onClick.AddListener (yesEvent);
-        saveButton.onClick.AddListener (ClosePanel);
-        
-        //noButton.onClick.RemoveAllListeners();
-        //noButton.onClick.AddListener (noEvent);
-        //noButton.onClick.AddListener (ClosePanel);
-        
-        cancelButton.onClick.RemoveAllListeners();
-        cancelButton.onClick.AddListener (cancelEvent);
-        cancelButton.onClick.AddListener (ClosePanel);
-
-        //this.question.text = question;
-
-        //this.iconImage.gameObject.SetActive (false);
+        //saveButton.onClick.AddListener (ClosePanel);
         saveButton.gameObject.SetActive (true);
-        //noButton.gameObject.SetActive (true);
-        cancelButton.gameObject.SetActive (true);
+        
+        // cancelButton.onClick.RemoveAllListeners();
+        // cancelButton.onClick.AddListener (cancelEvent);
+        // cancelButton.onClick.AddListener (ClosePanel);
+        // cancelButton.gameObject.SetActive (true);
+
+        editButton.onClick.RemoveAllListeners();
+        editButton.onClick.AddListener(editConnectionEvent);
+        editButton.gameObject.SetActive (true);
 
         toggleGroup.gameObject.SetActive(true);
 
         List<ToggleCustom> togglesInGroup = toggleGroup.getTogglesInGroup();
         foreach(ToggleCustom t in togglesInGroup){
-            t.onValueChanged.AddListener(delegate {ToggleValueChanged(unit);});
+            t.onValueChanged.AddListener(delegate {ToggleValueChanged(component);});
+        }
+    }
+
+    public void Choice (UnityAction yesEvent, UnityAction cancelEvent, UnityAction editConnectionEvent, List<string> dropOptions, string componentName) {
+        modalPanelObject.SetActive (true);
+        
+        saveButton.onClick.RemoveAllListeners();
+        saveButton.onClick.AddListener (yesEvent);
+        //saveButton.onClick.AddListener (ClosePanel);
+        
+        // cancelButton.onClick.RemoveAllListeners();
+        // cancelButton.onClick.AddListener (cancelEvent);
+        // cancelButton.onClick.AddListener (ClosePanel);
+
+        editButton.onClick.RemoveAllListeners();
+        editButton.onClick.AddListener(editConnectionEvent);
+        editButton.gameObject.SetActive (true);
+        
+        // constraintsSaveButton.onClick.RemoveAllListeners();
+        // constraintsSaveButton.onClick.AddListener(constraintsSaveEvent);
+        // constraintsSaveButton.gameObject.SetActive (true);
+
+        saveButton.gameObject.SetActive (true);
+        //noButton.gameObject.SetActive (true);
+        // cancelButton.gameObject.SetActive (true);
+
+        toggleGroup.gameObject.SetActive(true);
+
+        List<ToggleCustom> togglesInGroup = toggleGroup.getTogglesInGroup();
+        foreach(ToggleCustom t in togglesInGroup){
+            t.onValueChanged.AddListener(delegate {ToggleValueChanged(component);});
+        }
+
+        if(dropOptions[0] != null) {
+            constraintsDropdown.gameObject.SetActive(true);
+            GameObject.Find("ConstraintsLabel").GetComponent<Text>().text = "Constraints on";
+            constraintsDropdown.ClearOptions();
+            constraintsDropdown.AddOptions(dropOptions);
+            constraintsDropdown.onValueChanged.AddListener(delegate {
+                SelectConstraints(dropOptions, componentName);
+            });
+        } else {
+            // constraintsDropdown.gameObject.SetActive(false);
+            // GameObject.Find("ConstraintsLabel").GetComponent<Text>().text = "";
+            // GameObject.Find("FrequencyConstraintsLabel").GetComponent<Text>().text = "";
+            setDropdownActive(false);
         }
     }
     
-    public void ToggleValueChanged(string unit)
+    public void ToggleValueChanged(string component)
     {
         int _value = 0;
-        selectedToggles = new List<ToggleCustom>();
+        int _indexSumValue = 0;
+        int[] indexBinaryValue = {1,2,4,8,16,32,64,128};
+        //selectedToggles = new List<ToggleCustom>();
         foreach(ToggleCustom t in toggleGroup.ActiveToggles()){
-            _value += optionValues[int.Parse(t.name.Substring(7, 1))-1];
+            int toggleNumber = int.Parse(t.name.Substring(7, 1))-1;
+            _value += optionValues[toggleNumber];
+            _indexSumValue += indexBinaryValue[toggleNumber];
         }
         Text valueText = GameObject.Find("Value").GetComponent<Text>();
-        valueText.text = _value.ToString() + unit;
+        valueText.text = Util.changeUnit((float)_value, component);
         value = _value;
+        indexSumValue = _indexSumValue;
     }
 
-    public List<ToggleCustom> getSelectedToggles()
-    {
-        return selectedToggles;
+    public void SelectConstraints(List<string> _dropOptions, string _componentName) {
+        dropdownSelectedValue = constraintsDropdown.value;
+        // Text frequencyConstraintsLabel = Util.getChildObject("SelectValuePanel", "FrequencyConstraintsLabel").GetComponent<Text>();
+        
+        // if(dropdownSelectedValue == 0) {
+        //     constraintsHandle.removeConstrain(_componentName);
+        //     frequencyConstraintsLabel.text = "";
+        //     Util.getChildObject("SelectValuePanel", "FrequencyConstraintsValue").GetComponent<Text>().text = "";
+        // } else {
+        //     constraintsHandle.addConstrain(_componentName, _dropOptions[dropdownSelectedValue]);
+        //     frequencyConstraintsLabel.text = "Frequency : ";
+        //     //GameObject.Find("FrequencyConstraintsLabel").GetComponent<Text>().text = "Frequency : ";
+        // }
+    }
+
+    public void setConstraintsSelected(int _val) {
+        dropdownSelectedValue = _val;
+        constraintsDropdown.value = _val;
+    }
+    
+    public int getConstraintsSelected() {
+        return dropdownSelectedValue;
     }
 
     public void setSelectedToggle(int _value)
     {
-        int n = (int)Mathf.Log10(_value) + 1;
-        List<int> selected = new List<int>();
-        for(int i=0; i<n; i++, _value/=10) {
-            int result = _value % 10;
-            selected.Add(result);
+        indexSumValue = _value;
+        int[] selected = new int[8];
+        string binary = Convert.ToString(indexSumValue, 2);
+
+        //Debug.Log("indexSumValue dec = " + indexSumValue);
+        //Debug.Log("indexSumValue bin = " + binary);
+        //Debug.Log("length = " + binary.Length);
+
+        for(int i=0; i<binary.Length; i++) {
+            selected[i] = Convert.ToInt32(binary.ElementAt(binary.Length-1-i).ToString());
+            //Debug.Log("selected[" + i + "] = " + selected[i]);
         }
-        if(selected.Count < 5) {
-            for(int i=selected.Count; i<5; i++)
-                selected.Add(0);
+        for(int i = binary.Length; i<8; i++) {
+            selected[i] = 0;
+            //Debug.Log("? selected[" + i + "] = " + selected[i]);
         }
         
         foreach(ToggleCustom t in toggleGroup.getTogglesInGroup()) {
             int index = int.Parse(t.name.Last().ToString()) - 1;
-            Debug.Log("selected[" + index + "] = " + selected[index]);
+            //Debug.Log("selected[" + index + "] = " + selected[index]);
         
             if(selected[index] == 1) {
                 t.isOn = true;
@@ -117,15 +202,34 @@ public class SelectValuePanel : MonoBehaviour
         }
     }
 
+    public void setDropdownActive(bool state)
+    {
+        constraintsDropdown.gameObject.SetActive(state);
+        Util.getChildObject("SelectValuePanel", "ConstraintsLabel").GetComponent<Text>().text = "";
+        Util.getChildObject("SelectValuePanel", "FrequencyConstraintsLabel").GetComponent<Text>().text = "";
+        Util.getChildObject("SelectValuePanel", "FrequencyConstraintsValue").GetComponent<Text>().text = "";
+    }
+
     public int getSumOfSelectedValue()
     {
         //Debug.Log("value = " + value);
         return value;
     }
 
+    public int getSumOfSelectedBinaryValue()
+    {
+        //Debug.Log("value = " + value);
+        return indexSumValue;
+    }
+
     public void setSelectedValue(int _val)
     {
         value = _val;
+    }
+
+    public void setSelectedIndexValue(int _val)
+    {
+        indexSumValue = _val;
     }
 
     public void resetToggles()
@@ -137,6 +241,7 @@ public class SelectValuePanel : MonoBehaviour
     {
         optionValues = _optionValues;
         int numberOfLables = 0;
+
         // make checkboxes
         Transform[] children = modalPanelObject.GetComponentsInChildren<Transform>();
         foreach(Transform obj in children)     
@@ -147,20 +252,20 @@ public class SelectValuePanel : MonoBehaviour
                     temp.SetActive(false);
                     toggleGroup.UnregisterToggle(temp.GetComponent<ToggleCustom>());
                 } else {
-                    obj.gameObject.GetComponent<Text>().text = _optionValues[numberOfLables++].ToString();
+                    obj.gameObject.GetComponent<Text>().text = Util.changeUnit((float)_optionValues[numberOfLables++], component);
                 }
             }
         }
     }
     
-    public void setUnit(string type)
+    public void setComponent(string type)
     {
-        unit = type;
+        component = type;
     }
 
-    public void setTitle(string title)
+    public void setTitle(string target, string title)
     {
-        Text titleText = GameObject.Find("Title").GetComponent<Text>();
+        Text titleText = GameObject.Find(target).GetComponent<Text>();
         titleText.text = title;
     }
 
@@ -169,13 +274,7 @@ public class SelectValuePanel : MonoBehaviour
         modalPanelObject.transform.position = pos;
     }
 
-    void ClosePanel () {
+    public void ClosePanel () {
         modalPanelObject.SetActive (false);
-    }
-    private Vector3 GetCurrentMousePosition()
-    {
-        float distance = 1200;//GameObject.Find(comm.getSourcePin()).transform.position.z;
-        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-        return Camera.main.ScreenToWorldPoint(mousePosition);
     }
 }

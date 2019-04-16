@@ -9,3 +9,6 @@ For more information check the CHI 2019 paper: "VirtualComponent: a Mixed-Realit
 
 ## Video
 [![Watch the video](https://github.com/makinteract/VirtualComponent/blob/master/Images/video.png)](https://www.youtube.com/watch?v=53sC2-OyS2c&feature=youtu.be)
+
+## License
+MIT License

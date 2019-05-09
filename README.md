@@ -12,3 +12,26 @@ For more information check the CHI 2019 paper: "VirtualComponent: a Mixed-Realit
 
 ## License
 MIT License
+
+
+## Citing
+```
+@inproceedings{Kim:2019:VMT:3290605.3300407,
+ author = {Kim, Yoonji and Choi, Youngkyung and Lee, Hyein and Lee, Geehyuk and Bianchi, Andrea},
+ title = {VirtualComponent: A Mixed-Reality Tool for Designing and Tuning Breadboarded Circuits},
+ booktitle = {Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems},
+ series = {CHI '19},
+ year = {2019},
+ isbn = {978-1-4503-5970-2},
+ location = {Glasgow, Scotland Uk},
+ pages = {177:1--177:13},
+ articleno = {177},
+ numpages = {13},
+ url = {http://doi.acm.org/10.1145/3290605.3300407},
+ doi = {10.1145/3290605.3300407},
+ acmid = {3300407},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {circuits, component tuning, physical computing, toolkit},
+} 
+```
